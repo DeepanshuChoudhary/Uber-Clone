@@ -37,3 +37,25 @@ The API expects JSON data in the following format:
     "email": "test@test.com"
   }
 }
+
+
+
+## User Login API
+
+## Endpoint  
+`POST /users/login`
+
+This endpoint is used to authenticate an existing user.  
+It checks the email and password, and if valid, returns a JWT token along with the user data.
+
+---
+
+## Request Body
+
+The API expects JSON data in the following format:
+
+```json
+{
+  "email": "test@test.com",
+  "password": "test123"
+}
