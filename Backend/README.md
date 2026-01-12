@@ -161,3 +161,141 @@ The API expects JSON data in the following format:
     }
   }
 }
+
+
+# Captain Registration API
+
+## Endpoint  
+POST /captains/register
+
+Registers a new captain (driver) with vehicle details.
+
+---
+
+## Request Body
+
+```json
+{
+  "fullName": {
+    "firstName": "Rahul",
+    "lastName": "Verma"
+  },
+  "email": "rahul@test.com",
+  "password": "test123",
+  "vehicle": {
+    "color": "Black",
+    "plate": "DL01AB1234",
+    "capacity": 4,
+    "vehicleType": "Car"
+  }
+}
+```
+
+---
+
+## Example Response
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "captain": {
+    "_id": "65c1bfae12a3a9d45f0c22ab",
+    "fullName": {
+      "firstName": "Rahul",
+      "lastName": "Verma"
+    },
+    "email": "rahul@test.com",
+    "status": "inactive",
+    "vehicle": {
+      "color": "Black",
+      "plate": "DL01AB1234",
+      "capacity": 4,
+      "vehicleType": "Car"
+    }
+  }
+}
+```
+
+---
+
+# Captain Login API
+
+## Endpoint  
+POST /captains/login
+
+Authenticates captain and returns JWT.
+
+---
+
+## Request Body
+
+```json
+{
+  "email": "rahul@test.com",
+  "password": "test123"
+}
+```
+
+---
+
+## Example Response
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "captain": {
+    "_id": "65c1bfae12a3a9d45f0c22ab",
+    "email": "rahul@test.com"
+  }
+}
+```
+
+---
+
+# Captain Profile API
+
+## Endpoint  
+GET /captains/profile
+
+Returns logged-in captain profile.  
+Protected route.
+
+---
+
+## Example Response
+
+```json
+{
+  "_id": "65c1bfae12a3a9d45f0c22ab",
+  "fullName": {
+    "firstName": "Rahul",
+    "lastName": "Verma"
+  },
+  "email": "rahul@test.com",
+  "status": "inactive",
+  "vehicle": {
+    "color": "Black",
+    "plate": "DL01AB1234",
+    "capacity": 4,
+    "vehicleType": "Car"
+  }
+}
+```
+
+---
+
+# Captain Logout API
+
+## Endpoint  
+GET /captains/logout
+
+Logs out captain and invalidates token.
+
+---
+
+## Example Response
+
+```json
+{
+  "message": "Logged out captain"
+}
