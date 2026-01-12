@@ -82,7 +82,7 @@ const loginUser = async (req, res, next) => {
 
 }
 
-const getUserProfile = async(req, res, next) => {
+const getUserProfile = async(req, res) => {
 
     // console.log('Hello world user.controller.js')
 
