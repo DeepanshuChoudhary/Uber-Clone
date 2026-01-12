@@ -107,3 +107,57 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
   "email": "test@test.com",
   "socketId": null
 }
+
+
+# Captain Registration API
+
+## Endpoint  
+POST /captains/register
+
+This endpoint is used to register a new captain (driver) in the system.  
+A captain is a driver who owns a vehicle and can later accept ride requests.
+
+It validates input, hashes the password, stores the captain in the database, and returns a JWT token.
+
+---
+
+## Request Body
+
+The API expects JSON data in the following format:
+
+```json
+{
+  "fullName": {
+    "firstName": "Rahul",
+    "lastName": "Verma"
+  },
+  "email": "test@test.com",
+  "password": "test123",
+  "vehicle": {
+    "color": "Black",
+    "plate": "DL01AB1234",
+    "capacity": 4,
+    "vehicleType": "Car"
+  }
+}
+
+### Example Response
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "captain": {
+    "_id": "65c1bfae12a3a9d45f0c22ab",
+    "fullName": {
+      "firstName": "Rahul",
+      "lastName": "Verma"
+    },
+    "email": "test@test.com",
+    "status": "inactive",
+    "vehicle": {
+      "color": "Black",
+      "plate": "DL01AB1234",
+      "capacity": 4,
+      "vehicleType": "Car"
+    }
+  }
+}
