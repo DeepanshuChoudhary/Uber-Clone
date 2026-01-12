@@ -59,3 +59,51 @@ The API expects JSON data in the following format:
   "email": "test@test.com",
   "password": "test123"
 }
+
+
+## User Profile API
+
+### Endpoint  
+GET /users/profile
+
+This endpoint returns the currently logged-in user’s profile.  
+It is a protected route, so a valid JWT token is required.
+
+The token is verified by `authMiddleware`.  
+If valid, the user data is attached to `req.user` and returned.
+
+---
+
+### Authentication Required
+
+Send the token in either of these ways:
+
+Cookie:
+token=<JWT_TOKEN>
+
+OR
+
+Header:
+Authorization: Bearer <JWT_TOKEN>
+
+---
+
+### Example Request
+
+GET /users/profile  
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+---
+
+### Example Response
+
+```json
+{
+  "_id": "65bfa6e6d99f31e1c2a88c43",
+  "fullName": {
+    "firstName": "Deepanshu",
+    "lastName": "Choudhary"
+  },
+  "email": "test@test.com",
+  "socketId": null
+}
