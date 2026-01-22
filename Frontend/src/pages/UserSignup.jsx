@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { UserContext } from '../context/UserContext'
+import { UserDataContent } from '../context/UserContext';
 
 const UserSignup = () => {
 
@@ -11,22 +11,23 @@ const UserSignup = () => {
     const [password, setPassword] = useState('')
     const [userData, setUserData] = useState({});
 
+    const navigate = useNavigate()
 
-    const navigate = useNavigate();
-
-    const { user, setUser } = useContext(UserContext)
-
+    const { user, setUser } = useContext(UserDataContent);
 
 
     const handleFirstName = (e) => {
         setFirstName(e.target.value)
     }
+
     const handleLastName = (e) => {
         setLastName(e.target.value)
     }
+
     const handleEmail = (e) => {
         setEmail(e.target.value)
     }
+
     const handlePassword = (e) => {
         setPassword(e.target.value)
     }
@@ -36,24 +37,23 @@ const UserSignup = () => {
 
         const newUser = {
             fullName: {
-                FirstName: firstName,
-                LastName: lastName
+                firstName: firstName,
+                lastName: lastName
             },
-            Email: email,
-            Password: password
+            email: email,
+            password: password
         }
 
-        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/user/register`, newUser)
+        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, newUser);
 
         if (response.status === 201) {
-            const data = response.data;
+            const data = response.data
+            setUser(data.user)
 
-            setUser(data.user);
-
-            navigate('/home');
+            navigate('/home')
         }
 
-        console.log(userData);
+        // console.log(userData);
 
         setFirstName('')
         setLastName('')
