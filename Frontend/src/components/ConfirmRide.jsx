@@ -38,7 +38,7 @@ const ConfirmRide = (props) => {
                             <p className='text-sm text-gray-600'>Payment Cash</p>
                         </div>
                     </div>
-                </div>
+                </div> 
 
                 <button onClick={() => {
                     props.setVehicleFound(true)
