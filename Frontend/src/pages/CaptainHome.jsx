@@ -5,6 +5,7 @@ import RidePopUp from '../components/RidePopUp'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap';
 import ConfirmRidePopUp from '../components/ConfirmRidePopUp'
+import CaptainRiding from './CaptainRiding'
 
 const CaptainHome = () => {
 
@@ -39,6 +40,7 @@ const CaptainHome = () => {
             })
         }
     }, [confirmRidePopupPanel])
+
 
     return (
         <div className='h-screen'>
